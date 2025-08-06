@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>研究工具导航 - MzozM</title>
+    <meta name="description" content="MzozM的个人研究工具导航，507个精选学术资源和工具">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- 导航头部 -->
+        <header class="nav-header">
+            <div class="breadcrumb">
+                <a href="../" class="home-link">
+                    <i class="fas fa-home"></i> 首页
+                </a>
+                <span class="separator">/</span>
+                <span class="current">研究工具导航</span>
+            </div>
+            
+            <div class="page-title">
+                <h1><i class="fas fa-compass"></i> 研究工具导航</h1>
+                <p class="subtitle">507个精选学术资源，提升研究效率</p>
+            </div>
+
+            <!-- 搜索功能 -->
+            <div class="search-container">
+                <div class="search-wrapper">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" id="search-input" placeholder="搜索工具、网站或描述...">
+                    <button class="search-clear" id="search-clear" title="清空搜索">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- 统计信息 -->
+        <section class="stats-section">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number" id="total-bookmarks">507</div>
+                    <div class="stat-label">全部工具</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="filtered-count">507</div>
+                    <div class="stat-label">当前显示</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="category-count">12</div>
+                    <div class="stat-label">分类</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 分类导航 -->
+        <nav class="categories-nav">
+            <div class="categories-scroll">
+                <button class="category-btn active" data-category="all">
+                    <i class="fas fa-th"></i>
+                    <span>全部</span>
+                    <span class="count">507</span>
+                </button>
+                <!-- 分类按钮将通过JavaScript动态生成 -->
+            </div>
+        </nav>
+
+        <!-- 书签网格 -->
+        <main class="bookmarks-section">
+            <div class="bookmarks-grid" id="bookmarks-container">
+                <!-- 书签卡片将通过JavaScript动态生成 -->
+            </div>
+
+            <!-- 加载状态 -->
+            <div class="loading" id="loading">
+                <i class="fas fa-spinner fa-spin"></i>
+                <p>加载中...</p>
+            </div>
+
+            <!-- 无结果提示 -->
+            <div class="no-results" id="no-results" style="display: none;">
+                <i class="fas fa-search"></i>
+                <h3>没有找到匹配的工具</h3>
+                <p>尝试使用不同的关键词或选择其他分类</p>
+                <button class="btn-reset" onclick="resetSearch()">
+                    <i class="fas fa-undo"></i> 重置搜索
+                </button>
+            </div>
+        </main>
+
+        <!-- 页脚 -->
+        <footer class="footer">
+            <p>
+                &copy; 2025 MzozM · 
+                <a href="../">返回主页</a> · 
+                <span class="update-time">最后更新: 2025-01-06</span>
+            </p>
+        </footer>
+    </div>
+
+    <!-- 返回顶部按钮 -->
+    <button class="back-to-top" id="back-to-top" title="返回顶部">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- 加载书签数据和主脚本 -->
+    <script src="complete-bookmarks.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
