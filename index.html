@@ -12,7 +12,6 @@
         .container { max-width: 700px; margin: auto; background: #fff; padding: 32px 40px; border-radius: 12px; box-shadow: 0 2px 12px #eee; }
         .profile-header { display: flex; align-items: center; gap: 18px; margin-bottom: 24px; }
         h1 { margin: 0; font-size: 22px; font-weight: 600; line-height: 1.25; letter-spacing: -0.5px; }
-        h2 { font-size: 18px; font-weight: 600; line-height: 1.4; }
         .countdown { display: inline-flex; align-items: center; gap: 7px; margin-top: 8px; padding: 4px 10px; border: 1px solid #dce8e3; border-radius: 999px; background: #f3f8f5; color: #486659; font-size: 12px; line-height: 1.4; }
         .countdown[hidden] { display: none; }
         .countdown::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: #7a9b89; }
@@ -22,10 +21,15 @@
         a { color: #0078d7; text-decoration: none; }
         a:hover { text-decoration: underline; }
         .section { margin-bottom: 28px; }
-        .blog-list { list-style: none; padding: 0; }
-        .blog-list li { margin-bottom: 14px; }
-        .blog-title { font-weight: 600; font-size: 1.08em; }
-        .blog-date { color: #888; font-size: 0.95em; margin-left: 8px; }
+        .section-minimal { margin-bottom: 24px; }
+        .section-minimal h2 { margin: 0 0 10px; color: #222; font-size: 18px; font-weight: 600; line-height: 1.5; }
+        .blog-list { list-style: none; margin: 0; padding: 0; }
+        .blog-heading { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 14px; }
+        .blog-title { color: #222; font-weight: 400; font-size: 16px; }
+        .blog-date { color: #666; font-size: 12px; font-variant-numeric: tabular-nums; }
+        .blog-summary { margin: 4px 0 0; color: #666; font-size: 14px; }
+        .contact-links { display: flex; flex-wrap: wrap; gap: 8px 20px; margin: 0; font-size: 14px; }
+        .contact-links a { color: #333; }
     </style>
 </head>
 <body>
@@ -48,20 +52,27 @@
                 🌟目标：持续成长，记录每一次进步！
             </p>
         </div>
-        <div class="section">
+        <div class="section section-minimal">
             <h2>最新博客</h2>
             <ul class="blog-list">
                 <li>
-                    <span class="blog-title">[2025-07-01] 深度学习入门教程</span>
-                    <span class="blog-date">2025-07-01</span>           
-                    <p>介绍深度学习的基本概念和常用框架。</p>
+                    <div class="blog-heading">
+                        <span class="blog-title">AI infra</span>
+                        <time class="blog-date" datetime="2026-07-01">2026-07-01</time>
+                    </div>
+                    <p class="blog-summary">介绍AI的基本概念</p>
                 </li>
             </ul>
         </div>
-        <div class="section">
+        <section class="section section-minimal" id="notes" aria-labelledby="notes-heading">
+            <h2 id="notes-heading">Note</h2>
+            <p class="blog-summary">科研笔记、文献阅读与研究思考，陆续更新。</p>
+        </section>
+        <div class="section section-minimal">
             <h2>联系方式</h2>
-            <p>
-                <a href="https://github.com/MzozM/">GitHub</a> | <a href="https://scholar.google.com/">Google Scholar</a>
+            <p class="contact-links">
+                <a href="https://github.com/MzozM/">GitHub</a>
+                <a href="https://scholar.google.com/">Google Scholar</a>
             </p>
         </div>
     </div>
