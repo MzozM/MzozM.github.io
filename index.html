@@ -4,28 +4,41 @@
     <meta charset="UTF-8">
     <title>MzozM | 博客</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" type="image/jpeg" href="1.jpg">
+    <link rel="icon" type="image/png" href="github-avatar.png">
     <style>
-        body { font-family: 'Segoe UI', Arial, sans-serif; margin: 40px; background: #f9f9f9; color: #222; }
+        /* 全页继承同一字体栈；苹果设备使用系统字体，其他平台使用本地替代字体。 */
+        html { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Segoe UI", "Microsoft YaHei", system-ui, sans-serif; }
+        body { margin: 40px; background: #f9f9f9; color: #222; font-size: 16px; font-weight: 400; line-height: 1.65; }
         .container { max-width: 700px; margin: auto; background: #fff; padding: 32px 40px; border-radius: 12px; box-shadow: 0 2px 12px #eee; }
-        h1 { margin-top: 0; display: flex; align-items: center; gap: 18px; }
-        .avatar { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; border: 2px solid #eee; }
+        .profile-header { display: flex; align-items: center; gap: 18px; margin-bottom: 24px; }
+        h1 { margin: 0; font-size: 22px; font-weight: 600; line-height: 1.25; letter-spacing: -0.5px; }
+        h2 { font-size: 18px; font-weight: 600; line-height: 1.4; }
+        .countdown { display: inline-flex; align-items: center; gap: 7px; margin-top: 8px; padding: 4px 10px; border: 1px solid #dce8e3; border-radius: 999px; background: #f3f8f5; color: #486659; font-size: 12px; line-height: 1.4; }
+        .countdown[hidden] { display: none; }
+        .countdown::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: #7a9b89; }
+        .countdown-days { color: #294b3b; font-size: 14px; font-weight: 600; font-variant-numeric: tabular-nums; }
+        .avatar { flex-shrink: 0; width: 64px; height: 64px; border-radius: 50%; object-fit: cover; border: 2px solid #eee; }
         .info { color: #555; margin-bottom: 18px; }
         a { color: #0078d7; text-decoration: none; }
         a:hover { text-decoration: underline; }
         .section { margin-bottom: 28px; }
         .blog-list { list-style: none; padding: 0; }
         .blog-list li { margin-bottom: 14px; }
-        .blog-title { font-weight: bold; font-size: 1.08em; }
+        .blog-title { font-weight: 600; font-size: 1.08em; }
         .blog-date { color: #888; font-size: 0.95em; margin-left: 8px; }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>
-            <img src="1.jpg" alt="头像" class="avatar">
-            MzozM's Blog
-        </h1>
+        <header class="profile-header">
+            <img src="github-avatar.png" alt="MzozM 的 GitHub 头像" class="avatar">
+            <div>
+                <h1>MzozM's Blog</h1>
+                <div class="countdown" id="countdown" role="timer" hidden>
+                    <span class="countdown-days" id="countdown-days"></span><span>天</span>
+                </div>
+            </div>
+        </header>
         <div class="info">
             每天想毕业! @ 好好学习 | AI爱好者 | 持续学习与分享
         </div>
@@ -42,13 +55,38 @@
                     <span class="blog-title">[2025-07-01] 深度学习入门教程</span>
                     <span class="blog-date">2025-07-01</span>           
                     <p>介绍深度学习的基本概念和常用框架。</p>
+                </li>
+            </ul>
+        </div>
         <div class="section">
             <h2>联系方式</h2>
             <p>
-                <a href="mailto:    
-                <a href="https://github.com/mzozm">GitHub</a> | <a href="https://scholar.google.com/">Google Scholar</a>
+                <a href="https://github.com/MzozM/">GitHub</a> | <a href="https://scholar.google.com/">Google Scholar</a>
             </p>
         </div>
     </div>
+    <script>
+        // 按访客本地日期倒数到当年 12 月 31 日；当天为 0 天，跨年自动重置。
+        const millisecondsPerDay = 24 * 60 * 60 * 1000;
+        const countdownRefreshMilliseconds = 1000;
+
+        function updateCountdown(today = new Date()) {
+            const countdown = document.getElementById("countdown");
+            const year = today.getFullYear();
+            // 将日历日期映射为 UTC，避免夏令时造成一天不足或超过 24 小时。
+            const targetDay = Date.UTC(year, 11, 31);
+            const currentDay = Date.UTC(today.getFullYear(), today.getMonth(), today.getDate());
+            const remainingDays = Math.max(0, Math.round((targetDay - currentDay) / millisecondsPerDay));
+            document.getElementById("countdown-days").textContent = remainingDays;
+            countdown.setAttribute("aria-label", `距离 ${year} 年 12 月 31 日还有 ${remainingDays} 天`);
+            countdown.hidden = false;
+        }
+
+        updateCountdown();
+        setInterval(updateCountdown, countdownRefreshMilliseconds);
+        document.addEventListener("visibilitychange", () => {
+            if (!document.hidden) updateCountdown();
+        });
+    </script>
 </body>
 </html>
