@@ -1,0 +1,43 @@
+:root {
+    color-scheme: light;
+    --paper: #fffcf0;
+    --ink: #100f0f;
+    --muted: #6f6e69;
+    --surface: #f2f0e5;
+    --border: #e6e4d9;
+    --underline: #cecdc3;
+}
+
+:root[data-theme="dark"] {
+    color-scheme: dark;
+    --paper: #100f0f;
+    --ink: #e6e4d9;
+    --muted: #b7b5ac;
+    --surface: #1c1b1a;
+    --border: #343331;
+    --underline: #6f6e69;
+}
+
+.theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    margin-left: auto;
+    padding: 0;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    background: var(--paper);
+    color: var(--ink);
+    cursor: pointer;
+}
+
+.theme-toggle[hidden] { display: none; }
+.theme-toggle:hover { background: var(--surface); }
+.theme-toggle:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; }
+.theme-toggle svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.theme-toggle .theme-sun { display: none; }
+:root[data-theme="dark"] .theme-toggle .theme-sun { display: block; }
+:root[data-theme="dark"] .theme-toggle .theme-moon { display: none; }
